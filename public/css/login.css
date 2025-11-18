@@ -1,0 +1,126 @@
+body {
+    height: 100vh;
+    background-image: url("/storage/img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.judul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.judul h1{
+    width: 40%;
+    padding-bottom: 20px;
+    padding-top: 70px;
+    font-size: 40px;
+    border-bottom: 2px solid black;
+    /* font-family: sans-serif; */
+}
+
+.content{
+    display: flex;
+    height: 60%;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0px 5px 10px black;
+}
+
+.kiri{
+    width: 45%;
+    /* background-image: url('/storage/img/kuning.jpg'); */
+    background: linear-gradient(to bottom, #008374, #21b4a3 );
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.kiri img{
+    width: 300px;
+}
+
+.kiri h2{
+    margin-top: -50px;
+}
+
+.kanan {
+    background-color: white;
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form {
+    /* height: 90%; */
+    width: 80%;
+}
+
+.form h3{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group{
+    margin-top: 20px;
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    gap: 20px;
+}
+
+.input-group input{
+    border: none;
+    outline: none;
+}
+
+.forgot{
+    font-size: small;
+    color: rgb(126, 126, 126);
+    text-decoration: none;
+}
+
+.form button{
+    background: linear-gradient(135deg, #008374, #00a48c);
+    color: #ffffff;
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    border-radius: 999px;
+    display: block;
+    margin: 24px auto 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.28);
+    transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+}
+
+.form button:hover{
+    background: linear-gradient(135deg, #00a48c, #00c2a0);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.32);
+}
+
+.form button:active{
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.register{
+    text-align: center;
+    font-size: small;
+}
+.register a{
+    color: #ffc400;
+}
+
