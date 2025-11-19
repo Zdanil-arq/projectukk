@@ -25,7 +25,7 @@
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
                     <a class="nav-link" href="{{ route('dashboard') }}">
-                        <i class="fa-solid fa-gauge me-2"></i> Dashboard
+                        <i class="fa-solid fa-home   me-2"></i> Dashboard
                     </a>
                 </li>
 

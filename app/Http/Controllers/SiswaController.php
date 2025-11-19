@@ -14,7 +14,7 @@ class SiswaController extends Controller
             return redirect()->route('login');
         }
         $user = Session::get('user');
-        $data = DB::table('siswas')->get();
+        $data = DB::table('siswas')->orderBy('nis', 'asc')->get();
         return view('siswa.index', compact('user', 'data'));
     }
 
