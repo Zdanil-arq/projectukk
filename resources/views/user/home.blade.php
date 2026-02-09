@@ -54,6 +54,11 @@
     background: #009e8c;
     color: #ffffff;
     text-decoration: none;
+    transition: all 0.25s ease;
+}
+.home-menu-card:hover {
+    transform: translateY(-2px) scale(1);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 .home-info {
     margin-top: 90px;
