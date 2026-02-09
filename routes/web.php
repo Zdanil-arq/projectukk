@@ -32,7 +32,8 @@ Route::delete('/siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('
 //pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
 Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
-Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
+Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
+Route::put('/pembayaran/update/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
 Route::delete('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy'])->name('pembayaran.destroy');
 
 //profil

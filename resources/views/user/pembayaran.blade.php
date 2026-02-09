@@ -3,139 +3,286 @@
 @section('title', 'Cek Pembayaran')
 
 @section('hero')
-<h1 class="home-title" style="font-size:1.7rem;">Cek Status Pembayaran</h1>
-<p class="home-subtitle" style="max-width:520px;">
-    Masukkan NIS untuk melihat data siswa dan riwayat pembayaran.
-</p>
+<style>
+.container-narrow {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* SEARCH */
+.search-panel {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 8px black;
+}
+
+/* TOP GRID */
+.top-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+/* BOX */
+.box {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 8px black;
+}
+
+.box-title {
+    font-size: .8rem;
+    font-weight: 700;
+    color: #6b7280;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+/* IDENTITAS */
+.identity-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.identity-meta {
+    font-size: .9rem;
+    display: grid;
+    grid-template-columns: 60px auto;
+    row-gap: 6px;
+}
+
+.identity-meta span {
+    color: #6b7280;
+}
+
+.identity-meta strong {
+    font-weight: 600;
+    color: #111827;
+}
+
+/* TAGIHAN */
+.bill-item {
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 4px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: .9rem;
+}
+
+.bill-item:last-child {
+    border-bottom: none;
+}
+
+.bill-name {
+    font-weight: 600;
+}
+
+.bill-detail {
+    font-size: .8rem;
+    color: #6b7280;
+}
+
+.status {
+    justify-self: end;
+    align-self: center;
+    font-weight: 700;
+}
+
+.status.lunas {
+    color: #15803d;
+}
+
+.status.belum {
+    color: #b91c1c;
+}
+
+/* RIWAYAT */
+.history-box {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 8px black;
+}
+
+.history-title {
+    font-size: .95rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.history-item {
+    display: grid;
+    grid-template-columns: auto 140px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-info {
+    font-size: .9rem;
+}
+
+.history-info .date {
+    font-size: .75rem;
+    color: #6b7280;
+}
+
+.history-amount {
+    text-align: right;
+    font-weight: 700;
+    color: #15803d;
+}
+
+/* EMPTY */
+.empty {
+    text-align: center;
+    font-size: .85rem;
+    color: #9ca3af;
+    padding: 20px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .top-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="container-narrow">
+    <h1 class="home-title">Cek Pembayaran Siswa</h1>
+    <p class="home-subtitle">
+        Informasi pembayaran siswa berdasarkan Nomor Induk Siswa (NIS)
+    </p>
+</div>
 @endsection
 
 @section('content')
-<div class="row g-4">
-    {{-- kiri form pencarian --}}
-    <div class="col-lg-4">
-        <div class="soft-card p-3 p-md-4 search-card">
-            <h5 class="mb-3" style="font-size:1rem;">Cari NIS</h5>
-            <form action="{{ route('user.pembayaran') }}" method="GET">
-                <div class="mb-3">
-                    <label for="nis" class="form-label" style="font-size:0.85rem;">Nomor Induk Siswa (NIS)</label>
-                    <input type="text" id="nis" name="nis" class="form-control" placeholder="Masukkan NIS" value="{{ request('nis') }}">
-                </div>
-                <button type="submit" class="btn btn-success w-100">
-                    <i class="fa-solid fa-magnifying-glass me-1"></i> Cek
+<div class="container-narrow">
+
+    {{-- SEARCH --}}
+    <div class="search-panel">
+        <form method="GET" action="{{ route('user.pembayaran') }}" class="row g-2">
+            <div class="col-md-9">
+                <input type="text" name="nis" class="form-control" placeholder="Masukkan NIS" value="{{ request('nis') }}">
+            </div>
+            <div class="col-md-3 d-grid">
+                <button class="btn btn-success">
+                    Cari Data
                 </button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 
-    {{-- Kanan --}}
-    <div class="col-lg-8">
-        @if(isset($siswa))
-            @if($siswa)
-                {{-- Data siswa --}}
-                <div class="soft-card p-3 p-md-4 mb-3">
-                    <h5 class="mb-3" style="font-size:1rem;">Data Siswa</h5>
-                    <table class="table table-sm table-borderless mb-0">
-                        <tr>
-                            <th style="width:130px;">Nama</th>
-                            <td>{{ $siswa->nama_siswa ?? $siswa->nama }}</td>
-                        </tr>
-                        <tr>
-                            <th>Kelas</th>
-                            <td>{{ $siswa->kelas }} {{ $siswa->jurusan ?? '' }}</td>
-                        </tr>
-                        <tr>
-                            <th>NIS</th>
-                            <td>{{ $siswa->nis }}</td>
-                        </tr>
-                    </table>
-                </div>
+    {{-- IDENTITAS + TAGIHAN --}}
+    <div class="top-grid">
 
-                {{-- Riwayat pembayaran --}}
-                <div class="soft-card p-3 p-md-4 mb-3">
-                    <h5 class="mb-3" style="font-size:1rem;">Riwayat Pembayaran</h5>
-                    @if($riwayat->count() > 0)
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-sm align-middle mb-0">
-                                <thead class="table-light text-center">
-                                    <tr>
-                                        <th style="width:110px;">Tanggal</th>
-                                        <th>Jenis Pembayaran</th>
-                                        <th style="width:150px;">Jumlah Bayar</th>
-                                        <th>Keterangan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($riwayat as $r)
-                                        <tr>
-                                            <td class="text-center">{{ $r->tanggal_bayar }}</td>
-                                            <td>{{ $r->jenis_pembayaran }}</td>
-                                            <td class="text-end text-success fw-semibold">
-                                                Rp {{ number_format($r->jumlah_bayar, 0, ',', '.') }}
-                                            </td>
-                                            <td>{{ $r->keterangan ?? '-' }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <p class="text-muted mb-0" style="font-size:0.86rem;">
-                            Belum ada riwayat pembayaran.
-                        </p>
-                    @endif
-                </div>
+        {{-- IDENTITAS --}}
+        <div class="box">
+            <div class="box-title">Identitas Siswa</div>
 
-                {{-- Tagihan pembayaran --}}
-                <div class="soft-card p-3 p-md-4">
-                    <h5 class="mb-3" style="font-size:1rem;">Tagihan Pembayaran</h5>
+            @if(isset($siswa))
+                <div class="identity-name">{{ $siswa->nama_siswa }}</div>
+                <div class="identity-meta">
+                    <span>NIS</span>
+                    <strong>{{ $siswa->nis }}</strong>
 
-                    @php
-                        $targetNominal = [
-                            'Kas Oktober' => 8000,
-                            'Kas November' => 8000,
-                            'Kas Desember' => 8000,
-                        ];
-                    @endphp
-
-                    <ul class="tagihan-list">
-                        @foreach($targetNominal as $jenis => $target)
-                            @php
-                                $totalBayar = $riwayat->where('jenis_pembayaran', $jenis)->sum('jumlah_bayar');
-                                $status = $totalBayar >= $target ? 'Lunas' : 'Belum Lunas';
-                            @endphp
-                            <li class="tagihan-item">
-                                <div class="tagihan-left">
-                                    <span>{{ $jenis }}</span>
-                                    <span>Target: Rp {{ number_format($target, 0, ',', '.') }}</span>
-                                </div>
-                                <div class="tagihan-right">
-                                    <span>Rp {{ number_format($totalBayar, 0, ',', '.') }}</span>
-                                    @if($status == 'Lunas')
-                                        <span class="badge-soft-success">Lunas</span>
-                                    @else
-                                        <span class="badge-soft-danger">Belum Lunas</span>
-                                    @endif
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <span>Kelas</span>
+                    <strong>{{ $siswa->kelas }}</strong>
                 </div>
             @else
-                <div class="soft-card p-4">
-                    <h5 class="mb-2">Data tidak ditemukan</h5>
-                    <p class="mb-0 text-muted" style="font-size:0.86rem;">
-                        NIS yang dimasukkan tidak terdaftar.
-                    </p>
+                <div class="empty">
+                    Masukkan NIS untuk melihat data siswa
                 </div>
             @endif
+        </div>
+
+        {{-- STATUS TAGIHAN --}}
+        <div class="box">
+            <div class="box-title">Status Tagihan</div>
+
+            @if(isset($siswa))
+                @php
+                    $tagihan = [
+                        'Kas Oktober' => 8000,
+                        'Kas November' => 8000,
+                        'Kas Desember' => 8000,
+                    ];
+                @endphp
+
+                @foreach($tagihan as $nama => $target)
+                    @php
+                        $total = $riwayat
+                            ->where('jenis_pembayaran', $nama)
+                            ->sum('jumlah_bayar');
+                    @endphp
+
+                    <div class="bill-item">
+                        <div>
+                            <div class="bill-name">{{ $nama }}</div>
+                            <div class="bill-detail">
+                                Dibayar Rp {{ number_format($total,0,',','.') }}
+                                dari Rp {{ number_format($target,0,',','.') }}
+                            </div>
+                        </div>
+
+                        <div class="status {{ $total >= $target ? 'lunas' : 'belum' }}">
+                            {{ $total >= $target ? 'Lunas' : 'Belum' }}
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="empty">
+                    Masukkan NIS untuk melihat status tagihan
+                </div>
+            @endif
+        </div>
+
+
+    </div>
+
+{{-- RIWAYAT PEMBAYARAN --}}
+<div class="history-box">
+    <div class="history-title">Riwayat Pembayaran</div>
+
+    @if(isset($siswa))
+        @if(isset($riwayat) && $riwayat->count())
+            @foreach($riwayat as $r)
+                <div class="history-item">
+                    <div class="history-info">
+                        <div>{{ $r->jenis_pembayaran }}</div>
+                        <div class="date">{{ $r->tanggal_bayar }}</div>
+                    </div>
+                    <div class="history-amount">
+                        Rp {{ number_format($r->jumlah_bayar,0,',','.') }}
+                    </div>
+                </div>
+            @endforeach
         @else
-            <div class="soft-card p-4">
-                <h5 class="mb-2">Petunjuk</h5>
-                <p class="mb-0 text-muted" style="font-size:0.86rem;">
-                    Masukkan NIS pada form , kemudian tekan tombol cek.
-                </p>
+            <div class="empty">
+                Belum ada riwayat pembayaran
             </div>
         @endif
-    </div>
+    @else
+        <div class="empty">
+            Masukkan NIS untuk melihat riwayat pembayaran
+        </div>
+    @endif
+</div>
+
+
 </div>
 @endsection

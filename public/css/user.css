@@ -1,252 +1,101 @@
 body {
-background-color: #f5f7fb;
-font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-color: #1f2933;
-margin: 0;
-padding: 0;
-overflow-x: hidden;
+    background-color: #f1f1f1;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #1f2933;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
-/* ===== Navbar ===== */
+/* Navbar */
 .bg-teal {
-background-color: rgba(0, 131, 116, 0.96);
-backdrop-filter: blur(6px);
+    background-color: rgba(0, 131, 116, 0.96);
+    backdrop-filter: blur(6px);
 }
 
 .nav-elevated {
-box-shadow: 0 2px 10px rgba(15, 23, 42, 0.22);
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.22);
 }
 
 .navbar {
-padding: 10px 0;
+    padding: 10px 0;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-color: #d8fff5;
-font-weight: 500;
-transition: all 0.2s ease;
-padding: 8px 14px;
-border-radius: 999px;
-font-size: 0.9rem;
-}
-
-.navbar-dark .navbar-nav .nav-link:hover {
-color: #ffffff;
-background: rgba(0, 0, 0, 0.12);
-}
-
-.navbar-dark .navbar-nav .nav-link.active {
-color: #008374;
-background: #ffffff;
-}
-
-.brand-icon {
-width: 32px;
-height: 32px;
-background: rgba(255, 255, 255, 0.18);
-font-size: 0.9rem;
-}
-
-/* ===== Hero & layout umum ===== */
-.hero-section {
-position: relative;
-background: linear-gradient(135deg, #008374, #00a48c);
-color: #ffffff;
-padding-top: 110px;   /* ditambah supaya hijau turun lebih jauh */
-padding-bottom: 110px; /* ini juga */
-}
-
-.hero-overlay, .hero-pattern {
-position: absolute;
-inset: 0;
-pointer-events: none;
-}
-
-.hero-overlay {
-background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 55%);
-}
-
-.hero-pattern {
-background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.18) 1px, transparent 0);
-background-size: 26px 26px;
-opacity: 0.3;
-}
-
-.hero-content {
-position: relative;
-z-index: 2;
-}
-
+/* Layout umum */
 .main-content {
-position: relative;
-z-index: 3;
-margin-top: -60px;
-padding-bottom: 40px;
+    position: relative;
+    z-index: 3;
+    margin-top: -60px;
+    padding-bottom: 40px;
 }
 
-.content-shell {
-background: #ffffff;
-border-radius: 18px;
-box-shadow: 0 10px 26px rgba(15, 23, 42, 0.22);
-padding: 20px 18px 24px;
-}
-
-/* ===== HOME ===== */
-.home-title {
-font-size: clamp(1.8rem, 3vw, 2.2rem);
-font-weight: 700;
-margin-bottom: 6px;
-}
-
-.home-subtitle {
-font-size: 0.95rem;
-max-width: 460px;
-opacity: 0.95;
-}
-
-.home-menu-wrapper {
-margin-top: 18px;
-}
-
-.home-menu-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-gap: 18px;
-}
-
-.home-menu-card {
-border-radius: 14px;
-padding: 18px 18px 14px;
-background: #009e8c;
-text-decoration: none;
-color: #ffffff;
-box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
-transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
-}
-
-.home-menu-card:hover {
-transform: translateY(-3px);
-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
-background: #00aa97;
-}
-
-.home-menu-icon {
-width: 40px;
-height: 40px;
-border-radius: 12px;
-background: rgba(255, 255, 255, 0.16);
-display: inline-flex;
-align-items: center;
-justify-content: center;
-color: #ffffff;
-margin-bottom: 10px;
-}
-
-.home-menu-card h6 {
-font-size: 0.95rem;
-font-weight: 600;
-}
-
-.home-menu-card p {
-font-size: 0.82rem;
-margin-bottom: 0;
-opacity: 0.92;
-}
-
-/* ===== Panel putih untuk halaman lain (pembayaran dll) ===== */
-.soft-card {
-background: #ffffff;
-border-radius: 12px;
-border: 1px solid #e5e7eb;
-box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-}
-
-/* ===== Pembayaran: tagihan sederhana ===== */
-.tagihan-list {
-list-style: none;
-padding-left: 0;
-margin-bottom: 0;
-}
-
-.tagihan-item {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 8px 10px;
-border-radius: 10px;
-border: 1px solid #e5e7eb;
-margin-bottom: 8px;
-background-color: #ffffff;
-font-size: 0.85rem;
-}
-
-.tagihan-item:last-child {
-margin-bottom: 0;
-}
-
-.tagihan-left {
-display: flex;
-flex-direction: column;
-}
-
-.tagihan-left span:first-child {
-font-weight: 600;
-}
-
-.tagihan-left span:last-child {
-font-size: 0.78rem;
-color: #6b7280;
-}
-
-.tagihan-right {
-display: flex;
-flex-direction: column;
-align-items: flex-end;
-}
-
-.tagihan-right span:nth-child(1) {
-font-weight: 600;
-}
-
-.tagihan-right span:nth-child(2) {
-font-size: 0.78rem;
-color: #6b7280;
-}
-
-.badge-soft-success, .badge-soft-danger {
-margin-top: 4px;
-}
-
-.badge-soft-success {
-background: #ecfdf5;
-color: #15803d;
-border-radius: 999px;
-padding: 3px 9px;
-font-weight: 600;
-font-size: 0.75rem;
-}
-
-.badge-soft-danger {
-background: #fef2f2;
-color: #b91c1c;
-border-radius: 999px;
-padding: 3px 9px;
-font-weight: 600;
-font-size: 0.75rem;
-}
-
-@media (max-width: 767.98px) {
 .hero-section {
-    padding-top: 90px;
-    padding-bottom: 60px;
+    position: relative;
+    background: #019c8a;
+    color: #ffffff;
+    padding-top: 110px;   /* ditambah supaya hijau turun lebih jauh */
+    padding-bottom: 110px; /* ini juga */
 }
 
-.main-content {
-    margin-top: -40px;
+.footer-section {
+    background: #0f172a;
+    color: #cbd5f5;
+    padding: 60px 0 30px;
+    font-size: 0.85rem;
 }
 
-.content-shell {
-    padding: 16px 12px 20px;
-    border-radius: 14px;
+.footer-brand {
+    font-size: 1.1rem;
+    color: #ffffff;
 }
+
+.footer-text {
+    color: #c7d2fe;
+    line-height: 1.6;
+}
+
+.footer-title {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.footer-list,
+.footer-info {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.footer-list li {
+    margin-bottom: 8px;
+}
+
+.footer-list a {
+    text-decoration: none;
+    color: #c7d2fe;
+}
+
+.footer-list a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-info li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.footer-divider {
+    border-color: rgba(255,255,255,0.1);
+    margin: 30px 0 20px;
+}
+
+.footer-bottom {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.footer-small {
+    font-style: italic;
 }

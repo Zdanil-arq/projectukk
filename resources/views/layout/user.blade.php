@@ -73,6 +73,70 @@
     </div>
 </main>
 
+<footer class="footer-section mt-5">
+    <div class="container">
+        <div class="row g-4">
+
+            {{-- Brand --}}
+            <div class="col-lg-4">
+                <div class="footer-brand mb-3">
+                    <i class="fa-solid fa-layer-group me-2"></i>
+                    <strong>Administrasi</strong>
+                </div>
+                <p class="footer-text">
+                    Sistem administrasi sekolah untuk membantu pengelolaan
+                    pembayaran, pengeluaran, dan inventaris secara terstruktur,
+                    transparan, dan mudah diakses.
+                </p>
+            </div>
+
+            {{-- Menu --}}
+            <div class="col-lg-4 col-md-6">
+                <h6 class="footer-title">Menu Utama</h6>
+                <ul class="footer-list">
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('user.pembayaran') }}">Pembayaran</a></li>
+                    <li><a href="{{ route('user.pengeluaran') }}">Pengeluaran</a></li>
+                    <li><a href="{{ route('user.inventaris') }}">Inventaris</a></li>
+                </ul>
+            </div>
+
+            {{-- Info --}}
+            <div class="col-lg-4 col-md-6">
+                <h6 class="footer-title">Informasi</h6>
+                <ul class="footer-info">
+                    <li>
+                        <i class="fa-solid fa-circle-info me-2"></i>
+                        Data pembayaran bersifat informatif dan menyesuaikan
+                        data yang tercatat di sistem.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-shield-halved me-2"></i>
+                        Keamanan data siswa dijaga dan tidak disebarluaskan.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-clock me-2"></i>
+                        Sistem tersedia selama jam operasional sekolah.
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <span>
+                © {{ date('Y') }} Administrasi Sekolah. All rights reserved.
+            </span>
+            <span class="footer-small">
+                Dibuat untuk keperluan administrasi internal
+            </span>
+        </div>
+    </div>
+</footer>
+
+
 
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     @stack('scripts')

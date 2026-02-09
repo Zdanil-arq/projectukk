@@ -15,17 +15,17 @@
 <body>
 
     <div class="judul">
-        <h1 class="text-center">Login</h1>
+        <h1 class="text-center">LOGIN</h1>
     </div>
 
     <div class="content mt-3">
         <div class="kiri">
             <img src="{{ asset('storage/img/loginlogo.png') }}" alt="logo" class="logo">
-            <h2>Login</h2>
+            <h2>LOGIN</h2>
         </div>
         <div class="kanan">
             <div class="form">
-                <h3>Members Log in</h3>
+                <h3>Login</h3>
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     @if ($errors->any())

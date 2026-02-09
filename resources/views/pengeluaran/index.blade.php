@@ -30,6 +30,7 @@
     .modern-table td {
         padding: 12px 15px;
         vertical-align: middle;
+        text-align: center;
     }
     .no-data {
         text-align: center;
@@ -81,7 +82,7 @@
     <div class="content-wrapper">
         @if($data->count() > 0)
             <div class="table-responsive">
-                <table class="table modern-table align-middle">
+                <table class="table table-striped table-hover modern-table align-middle">
                     <thead>
                         <tr>
                             <th>#</th>

@@ -159,10 +159,10 @@
                                             Rp{{ number_format($p->jumlah_bayar, 0, ',', '.') }}</td>
                                         <td>{{ $p->keterangan }}</td>
                                         <td>
-                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editModal{{ $p->id }}">
+                                            <a href="{{ route('pembayaran.edit', $p->id) }}"
+                                                class="btn btn-warning btn-sm">
                                                 <i class="fa-solid fa-pen-to-square"></i>
-                                            </button>
+                                            </a>
                                             <form action="{{ route('pembayaran.destroy', $p->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
@@ -172,63 +172,8 @@
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
                                             </form>
-
                                         </td>
                                     </tr>
-
-                                    <!-- Modal Edit -->
-                                    <div class="modal fade" id="editModal{{ $p->id }}" tabindex="-1"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <form method="POST" action="{{ route('pembayaran.update', $p->id) }}">
-                                                    @csrf
-                                                    <div class="modal-header bg-warning">
-                                                        <h5 class="modal-title text-dark">
-                                                            <i class="fa-solid fa-pen-to-square me-2"></i> Edit Pembayaran
-                                                        </h5>
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Jenis Pembayaran</label>
-                                                            <select name="jenis_pembayaran" class="form-select" required>
-                                                                <option value="">-- Pilih Jenis Pembayaran --</option>
-                                                                @foreach ($targetNominal as $jenis => $nominal)
-                                                                    <option value="{{ $jenis }}"
-                                                                        {{ $p->jenis_pembayaran == $jenis ? 'selected' : '' }}>
-                                                                        {{ $jenis }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Jumlah Bayar</label>
-                                                            <input type="number" name="jumlah_bayar"
-                                                                class="form-control" value="{{ $p->jumlah_bayar }}"
-                                                                required>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Tanggal Bayar</label>
-                                                            <input type="date" name="tanggal_bayar"
-                                                                class="form-control" value="{{ $p->tanggal_bayar }}">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Keterangan</label>
-                                                            <input type="text" name="keterangan" class="form-control"
-                                                                value="{{ $p->keterangan }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-success">Simpan</button>
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Batal</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
                                 @empty
                                     <tr>
                                         <td colspan="5" class="text-muted py-3">Belum ada riwayat pembayaran.</td>
