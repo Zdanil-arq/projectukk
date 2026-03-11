@@ -11,7 +11,6 @@
 
 @section('content')
 <style>
-    /* wrapper khusus inventaris, tetap ikut nuansa global */
     .inv-wrapper {
         background: #ffffff;
         border-radius: 16px;

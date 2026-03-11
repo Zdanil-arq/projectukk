@@ -23,7 +23,7 @@
     position: relative;
     font-size: 60px;
     font-weight: 700;
-    margin-bottom: 18px; /* kasih ruang buat garis */
+    margin-bottom: 18px; 
 }
 
 .home-title::after {
